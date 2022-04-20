@@ -1,3 +1,59 @@
 <script>
+    function crearTablaContactos() {
+        let tabla = document.getElementById('tablaContactos');
+        if (tabla) tabla.remove();
 
+        google.script.run.withSuccessHandler(
+            function(obj) {
+
+                tabla = document.createElement('table');
+                tabla.id = 'tablaContactos';
+
+                let tablaHeader = document.createElement('thead');
+                let tablaBody = document.createElement('tbody');
+
+                for (let i = 0; i < obj.length; i++) {
+                    let fila = document.createElement('tr');
+
+                    for (let j = 0; j < obj[i].length; j++) {
+                        let celda = document.createElement('td');
+                        celda.textContent = obj[i][j];
+                        fila.appendChild(celda);
+                    }
+                    if (i == 0) {
+                        tablaHeader.appendChild(fila);
+                        tabla.appendChild(tablaHeader);
+                    } else {
+                        tablaBody.appendChild(fila);
+                    }
+                }
+                //                Array.from(obj).forEach((filaActual, i) => {
+                //let fila = document.createElement('tr');
+                // filaActual.forEach(celdaActual => {
+                //let celda = document.createElement('td');
+                //celda.textContent = celdaActual;
+                //fila.appendChild(celda);
+                // });
+                //if (i == 0) {
+                // tablaHeader.appendChild(fila);
+                //tabla.appendChild(tablaHeader);
+                // } else {
+                // tablaBody.appendChild(fila);
+                // }
+
+                //});
+
+                // Añadiendo diseño a la cabecera de la tabla para
+                tablaHeader.classList.add('table-dark');
+                // Añadiendo el cuerpo de la tabla 
+                tabla.appendChild(tablaBody);
+                // Añadiendo las clases Bootstrap 
+                tabla.classList.add('table', 'table-striped', 'border', 'border-3');
+                // Añadiendo el cuerpo a la paginacion
+                document.getElementById('divContactos').appendChild(tabla);
+            }).obtenerContactos();
+    }
+</script>
+</script> // Añadiendo el cuerpo a la paginacion document.getElementById('divContactos').appendChild(tabla); }).obtenerContactos(); }
+</script>
 </script>
