@@ -3,60 +3,78 @@
         let tabla = document.getElementById('tablaContactos');
         if (tabla) tabla.remove();
 
-        google.script.run.withSuccessHandler(
-            function(obj) {
+        google.script.run
+            .withSuccessHandler(crearTablaContactosCorrectamente)
+            .withFailureHandler(crearTablaContactosError)
+            .obtenerContactos();
+    }
 
-                tabla = document.createElement('table');
-                tabla.id = 'tablaContactos';
+    function crearTablaContactosCorrectamente(obj) {
 
-                let tablaHeader = document.createElement('thead');
-                let tablaBody = document.createElement('tbody');
+        tabla = document.createElement('table');
+        tabla.id = 'tablaContactos';
 
-                // header de la tabla
-                let primeraFila = document.createElement('tr');
-                for (let i = 0; i < obj[0].length; i++) {
-                    let celda = document.createElement('td');
-                    celda.textContent = obj[0][i];
-                    primeraFila.appendChild(celda);
-                }
-                tablaHeader.appendChild(primeraFila);
-                tabla.appendChild(tablaHeader);
+        let tablaHeader = document.createElement('thead');
+        let tablaBody = document.createElement('tbody');
 
-                // detalle de la tabla
-                for (let i = 1; i < obj.length; i++) {
-                    let fila = document.createElement('tr');
+        // header de la tabla
+        let primeraFila = document.createElement('tr');
+        for (let i = 0; i < obj[0].length; i++) {
+            let celda = document.createElement('td');
+            celda.textContent = obj[0][i];
+            primeraFila.appendChild(celda);
+        }
+        tablaHeader.appendChild(primeraFila);
+        tabla.appendChild(tablaHeader);
 
-                    for (let j = 0; j < obj[i].length; j++) {
-                        let celda = document.createElement('td');
-                        celda.textContent = obj[i][j];
-                        fila.appendChild(celda);
-                    } {
-                        tablaBody.appendChild(fila);
-                    }
-                }
-                // Array.from(obj).forEach((filaActual, i) => {
-                //let fila = document.createElement('tr');
-                // filaActual.forEach(celdaActual => {
-                //let celda = document.createElement('td');
-                //celda.textContent = celdaActual;
-                //fila.appendChild(celda);
-                // });
-                //if (i == 0) {
-                // tablaHeader.appendChild(fila);
-                //tabla.appendChild(tablaHeader);
-                // } else {
-                // tablaBody.appendChild(fila);
-                // }
-                //});
+        // detalle de la tabla
+        for (let i = 1; i < obj.length; i++) {
+            let fila = document.createElement('tr');
 
-                // Añadiendo diseño a la cabecera de la tabla para
-                tablaHeader.classList.add('table-dark');
-                // Añadiendo el cuerpo de la tabla 
-                tabla.appendChild(tablaBody);
-                // Añadiendo las clases Bootstrap 
-                tabla.classList.add('table', 'table-striped', 'border', 'border-3');
-                // Añadiendo el cuerpo a la paginacion
-                document.getElementById('divContactos').appendChild(tabla);
-            }).obtenerContactos();
+            for (let j = 0; j < obj[i].length; j++) {
+                let celda = document.createElement('td');
+                celda.textContent = obj[i][j];
+                fila.appendChild(celda);
+            } {
+                tablaBody.appendChild(fila);
+            }
+        }
+
+        // Añadiendo diseño a la cabecera de la tabla para
+        tablaHeader.classList.add('table-dark');
+        // Añadiendo el cuerpo de la tabla 
+        tabla.appendChild(tablaBody);
+        // Añadiendo las clases Bootstrap 
+        tabla.classList.add('table', 'table-striped', 'border', 'border-3');
+        // Añadiendo el cuerpo a la paginacion
+        document.getElementById('divContactos').appendChild(tabla);
+
+        // mostrar notificacion de proceso exitoso
+        crearNotificacion(1, 'Contactos obtenidos correctamente', 'Todo en orden')
+    }
+
+    function crearTablaContactosError() {
+        // Mostrar notificacion de error
+    }
+
+    function crearNotificacion(tipo, mensaje, titulo) {
+        // obtener los datos de
+        let mensajeNotificacion = document.getElementById('mensajeNotificacion');
+        let tituloNotificacion = document.getElementById('tituloNotificacion');
+        let elementoNotificacion = document.getElementById('notificacion');
+        let iconoNotificacion = document.getElementById('iconoNotificacion');
+        let notificacion = bootstrap.Toast.getOrCreateInstance(elementoNotificacion);
+
+        // editar la notificacion
+        iconoNotificacion.className = '';
+        iconoNotificacion.classList.add('bi', 'bi-check2-square');
+        mensajeNotificacion.textContent = mensaje;
+        tituloNotificacion.textContent = titulo;
+        elementoNotificacion.style.background = getComputedStyle(document.documentElement).getPropertyValue('--color-verde-oscuro')
+
+
+        // mostrar notificacion
+        notificacion.show();
+
     }
 </script>
