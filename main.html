@@ -1,33 +1,36 @@
 <main>
-    <!-- Botones-->
-    <div class="d-flex justify-content-center mb-4 ">
-        <button class="btn btn-success m-3" onclick="crearTablaContactos()">Mostrar Contáctos</button>
+    <!-- Formulario -->
+    <div class="d-flex justify-content-center my-3">
+        <form onsubmit="insertarContacto()" method="dialog" id="formulario">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Introduce el nombre del Contacto</label>
+                <input type="text" class="form-control" name="nombre" id="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="correo" class="form-label">Introduce el correo del Contacto</label>
+                <input type="email" class="form-control" name="correo" id="correo">
+            </div>
+            <!-- Botones-->
+            <button type="button" class="btn btn-success m-3" onclick="crearTablaContactos()">Mostrar Contáctos</button>
+            <button type="submit" class="btn btn-primary">Crear Contacto</button>
+            </formon>
     </div>
     <!-- Tabla de Contáctos-->
-    <div class="container col-12 col-lg-6 d-flex justify-content-center" id="divContactos">
-
-    </div>
+    <div class="container col-12 col-lg-6 d-flex justify-content-center" id="divContactos"></div>
 
     <!--Notificaciones-->
 
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div class="position-fixed bottom-0 end-0 p-3 " style="z-index: 11 ">
         <!--Toast-->
         <div id="notificacion" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
 
             <div class="toast-header p-0">
-
-                <div class="icono-notificacion">
-                    <i id="iconoNotificacion"></i>
-                </div>
-                <strong class=" me-auto" id="tituloNotificacion"></strong>
-                <button type="button " class="btn-close m-2 " data-bs-dismiss="toast " aria-label="Close "></button>
+                <div class="icono-notificacion"><i id="iconoNotificacion"></i></div>
+                <strong class="me-auto" id="tituloNotificacion"></strong>
+                <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
 
-            <div class="toast-body " id="mensajeNotificacion">
-
-            </div>
+            <div class="toast-body" id="mensajeNotificacion"></div>
         </div>
     </div>
-
-
 </main>
