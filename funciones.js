@@ -21,3 +21,7 @@
 
         HOJA.appendRow([nombre, apellidos, correo, telf]);
     }
+
+    function borrarContacto(numFila) {
+        HOJA.deleteRow(numFila);
+    }
