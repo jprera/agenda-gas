@@ -3,6 +3,7 @@
     <div class="d-flex justify-content-center my-3">
         <button type="button" class="btn btn-success m-2" onclick="crearTablaContactos()">Mostrar Contáctos</button>
         <button type="button" class="btn btn-primary m-2" onclick="abrirModalCrearContacto()">Crear Contacto</button>
+        <button type="button" class="btn btn-warning m-2" onclick="importarContacto()">+ 5</button>
 
     </div>
     <!-- Tabla de Contáctos-->
@@ -23,7 +24,7 @@
                     <h5 class="modal-title" id="tituloModal">Ingreso de Contactos</h5>
                 </div>
                 <!-- Formulario Crear Contacto-->
-                <form onsubmit="insertarContacto() " method="dialog" id="formulario">
+                <form onsubmit="insertarContacto()" method="dialog" id="formulario">
                     <div class="modal-body">
                         <!-- Nombres y Apellidos -->
                         <div class="row mb-3">
@@ -31,7 +32,7 @@
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*" title="El Nombre No Puede Contener Numeros" required>
                             </div>
-                            <div class="col-8 ">
+                            <div class="col-8">
                                 <label for="nombre" class="form-label ">Apellidos</label>
                                 <input type="text" class="form-control" name="apellidos" id="apellidos" pattern="[^0-9]*" title="Los Apellidos No Pueden Contener Numeros" required>
                             </div>
