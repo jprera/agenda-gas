@@ -16,17 +16,17 @@
 
     function limpiar() {
         eliminarTabla();
-        eliminarTarjetas(); 
+        eliminarTarjetas();
         crerarLoaderCirculos('divContactos');
     }
-    
-    function  mostrar() {
+
+    function mostrar() {
         crearTarjetasContactos();
         eliminarLoader();
     }
 
 
-// INSERTAR CONTACTO
+    // INSERTAR CONTACTO
     function insertarContacto() {
         limpiar();
         /*Obtene datos*/
@@ -57,7 +57,7 @@
         mostrar();
 
     }
-// MODIFICAR CONTACTO
+    // MODIFICAR CONTACTO
     function modificarContacto(numFila) {
         limpiar();
         // cerrar modal
@@ -68,7 +68,7 @@
         let correo = document.getElementById("correo").value;
         let telf = document.getElementById("telf").value;
 
-        
+
         google.script.run
             .withSuccessHandler(contactoModificadoCorrectamente)
             .withFailureHandler(contactoModificadoError)
@@ -89,7 +89,7 @@
         crearNotificacionError('No se ha podido Modificar el Contacto', 'Notificación del Sistema');
         mostrar();
     }
-// BORRAR CONTACTO
+    // BORRAR CONTACTO
 
     function borrarContacto(numFila) {
         limpiar();
@@ -110,7 +110,7 @@
     }
 
 
-// IMPORTAR CONTACTO
+    // IMPORTAR CONTACTO
     function importarContacto() {
         limpiar();
         google.script.run
@@ -126,6 +126,7 @@
 
     function contactosImportadosError() {
         crearNotificacionError('No se han podido Importar los Contactos', 'Notificación del Sistema');
-        mostrar();    }
+        mostrar();
+    }
 
 </script>
