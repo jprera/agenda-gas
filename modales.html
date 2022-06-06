@@ -1,7 +1,8 @@
 <script>
+    const IMAGEN_PERFIL_INICIO ='https://drive.google.com/uc?export=view&id=1saWkewkROjTfnxAp8VoNqZSygEvqKwiJ';
+
     function abrirModalCrearContacto() {
-        // boton crear
-        let boton = document.getElementById('botonCrearModificar');
+;        let boton = document.getElementById('botonCrearModificar');
         boton.textContent = 'Crear Contacto';
         boton.classList = '';
         boton.classList.add('btn', 'btn-success');
@@ -17,6 +18,8 @@
         document.getElementById('apellidos').value = '';
         document.getElementById('correo').value = '';
         document.getElementById('telf').value = '';
+        document.getElementById('imagen').value = '';
+        document.getElementById('imgForm').src = IMAGEN_PERFIL_INICIO;
 
         // abrir modal
         bootstrap.Modal.getOrCreateInstance(document.getElementById('crearContactoModal')).show();
@@ -40,6 +43,7 @@
         document.getElementById('apellidos').value = contacto.apellidos;
         document.getElementById('correo').value = contacto.correo;
         document.getElementById('telf').value = contacto.telf;
+
 
         // abrir modal
         bootstrap.Modal.getOrCreateInstance(document.getElementById('crearContactoModal')).show();

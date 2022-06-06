@@ -2,12 +2,13 @@
     <!-- Botones Superiores -->
     <div class="d-flex justify-content-center my-3">
         <button type="button" class="btn btn-success m-2" onclick="crearTarjetasContactos()">Mostrar Contáctos</button>
-        <button type="button" class="btn btn-success m-2" onclick="crearTablaContactos()">Mostrar Contáctos Tabla   </button>
+        <button type="button" class="btn btn-success m-2" onclick="crearTablaContactos()">Mostrar Contáctos Tabla
+        </button>
         <button type="button" class="btn btn-primary m-2" onclick="abrirModalCrearContacto()">Crear Contacto</button>
         <button type="button" class="btn btn-warning m-2" onclick="importarContacto()">+ 5</button>
 
     </div>
-    <!-- Tabla de Contáctos-->
+    <!--  Contáctos-->
     <div class="container col-12 d-flex justify-content-center" id="divContactos"></div>
 
     <!-- Notificaciones -->
@@ -18,7 +19,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal" aria-hidden="true">
+    <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal"
+        aria-hidden="true">
         <div class="modal-lg modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -27,23 +29,42 @@
                 <!-- Formulario Crear Contacto-->
                 <form onsubmit="insertarContacto()" method="dialog" id="formulario">
                     <div class="modal-body">
-                        <!-- Nombres y Apellidos -->
                         <div class="row mb-3">
-                            <div class="col-4">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*" title="El Nombre No Puede Contener Numeros" required>
+                            <!-- Parte Izquierda -->
+                            <div class="col-6 d-flex flex-column">
+                                <!-- Nombre -->
+                                <div class="mb-2">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*"
+                                        title="El Nombre No Puede Contener Numeros" required>
+                                </div>
+                                <!-- Apellidos -->
+                                <div class="mb-2">
+                                    <label for="nombre" class="form-label ">Apellidos</label>
+                                    <input type="text" class="form-control" name="apellidos" id="apellidos"
+                                        pattern="[\D]*" title="Los Apellidos No Puede Contener Numeros" required>
+                                </div>
+                                <!-- Correo -->
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                    <input type="email" class="form-control" name="correo" id="correo" required>
+                                </div>
+                                <!-- Telefono -->
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                                    <input type="tel" class="form-control" name="telf" id="telf" pattern="[\d]{8}"
+                                        title="El Telefono debe contener 8 digitos" required>
+                                </div>
+                                <!-- Archivo Imagen -->
+                                <div class="mb-2">
+                                    <label for="imagen" class="form-label">Selecciona una Imagen para el Contacto</label>
+                                    <input type="file" accept="image/*" class="form-control" name="imagen" id="imagen">
+                                </div>
                             </div>
-                            <div class="col-8">
-                                <label for="nombre" class="form-label ">Apellidos</label>
-                                <input type="text" class="form-control" name="apellidos" id="apellidos" pattern="[^0-9]*" title="Los Apellidos No Pueden Contener Numeros" required>
+                            <!-- Parte Derecha -->
+                            <div class="col-6 d-flex justify-content-center align-items-center p-0">
+                                <img class="img-fluid img-form" id="imgForm" alt="Imagen de Contacto">
                             </div>
-                        </div>
-                        <!-- Correos y telefono -->
-                        <div class="input group mb-3">
-                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                            <input type="email" class="form-control me-4" name="correo" id="correo" required>
-                            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                            <input type="tel" class="form-control" name="telf" id="telf" pattern="[\d]{8}" title="El Telefono debe contener 8 digitos" required>
                         </div>
                     </div>
                     <div class="modal-footer">
