@@ -1,16 +1,24 @@
 <script>
-const ICONO_CHECK = 'bi-check2-square';
-const ICONO_PAPELERA = 'bi-trash';
-const ICONO_CONTACTO = 'bi-person-plus-fill';
-const ICONO_ERROR = 'bi-bug';
-const ICONO_ADVERTENCIA = 'bi-exclamation-square';
-const LOTTIE_CHECK = 'https://assets3.lottiefiles.com/private_files/lf30_dfspihm8.json';
-const LOTTIE_PAPELERA = 'https://assets3.lottiefiles.com/packages/lf20_WcyRdM.json';
-const LOTTIE_CONTACTO = 'https://assets1.lottiefiles.com/packages/lf20_sOjs8q/add_contact_05.json';
-const LOTTIE_ERROR = 'https://assets10.lottiefiles.com/packages/lf20_yw3nyrsv.json';
-const LOTTIE_ADVERTENCIA = 'https://assets2.lottiefiles.com/packages/lf20_qbuxqwzg.json';
-const LOTTIE_LOADER_NUBE = 'https://assets8.lottiefiles.com/private_files/lf30_m5jf97io.json';
-const LOTTIE_LOADER_AVION = 'https://assets4.lottiefiles.com/packages/lf20_x62chJ.json';
+    ////////////////////
+    //// CONSTANTES 
+    ////////////////////
+    const ICONO_CHECK = 'bi-check2-square';
+    const ICONO_PAPELERA = 'bi-trash';
+    const ICONO_CONTACTO = 'bi-person-plus-fill';
+    const ICONO_ERROR = 'bi-bug';
+    const ICONO_ADVERTENCIA = 'bi-exclamation-square';
+    const LOTTIE_CHECK = 'https://assets3.lottiefiles.com/private_files/lf30_dfspihm8.json';
+    const LOTTIE_PAPELERA = 'https://assets3.lottiefiles.com/packages/lf20_WcyRdM.json';
+    const LOTTIE_CONTACTO = 'https://assets1.lottiefiles.com/packages/lf20_sOjs8q/add_contact_05.json';
+    const LOTTIE_ERROR = 'https://assets10.lottiefiles.com/packages/lf20_yw3nyrsv.json';
+    const LOTTIE_ADVERTENCIA = 'https://assets2.lottiefiles.com/packages/lf20_qbuxqwzg.json';
+    const LOTTIE_LOADER_NUBE = 'https://assets8.lottiefiles.com/private_files/lf30_m5jf97io.json';
+    const LOTTIE_LOADER_AVION = 'https://assets4.lottiefiles.com/packages/lf20_x62chJ.json';
+
+
+    ////////////////////
+    //// EVENTOS
+    ////////////////////
 
     // boton subir
     window.addEventListener('scroll', function () {
@@ -27,6 +35,38 @@ const LOTTIE_LOADER_AVION = 'https://assets4.lottiefiles.com/packages/lf20_x62ch
         document.getElementById('imgForm').src = URL.createObjectURL(this.files[0])
     });
 
+
+    // dragover
+    document.getElementById('imgForm').addEventListener("dragover", function (event) {
+        event.preventDefault();
+        this.style.filter = 'opacity(0%)';
+        document.getElementById('cajaIconoForm').style.display = 'flex';
+    });
+
+    // dargleave
+    document.getElementById('imgForm').addEventListener("dragleave", function (event) {
+        this.style.filter = 'opacity(100%)';
+        document.getElementById('cajaIconoForm').style.display = 'none';
+    });
+    
+    
+    // drop
+    document.getElementById('imgForm').addEventListener("drop", function (event) {
+        event.preventDefault();
+        let ficheros = event.dataTransfer.files;
+        // pasamos los archivos al input
+        document.getElementById('imagen').files = ficheros;
+        // creamos una URL para mostrar la imagen
+        document.getElementById('imgForm').src = URL.createObjectURL(ficheros[0])
+        // mostrar imagen y quitamos zona de carga
+        document.getElementById('cajaIconoForm').style.display = 'none';
+        
+
+
+        this.style.filter = 'opacity(100%)';
+    });
+
+
     function subirArriba() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -42,6 +82,12 @@ const LOTTIE_LOADER_AVION = 'https://assets4.lottiefiles.com/packages/lf20_x62ch
         crearTarjetasContactos();
         eliminarLoader();
     }
+
+
+
+
+
+
 
 
     // INSERTAR CONTACTO
