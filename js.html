@@ -59,12 +59,47 @@
         // creamos una URL para mostrar la imagen
         document.getElementById('imgForm').src = URL.createObjectURL(ficheros[0])
         // mostrar imagen y quitamos zona de carga
-        document.getElementById('lottieForm').style.display = 'none';
-
-
-
         this.style.filter = 'opacity(100%)';
     });
+
+    document.getElementById('copiarCorreo').addEventListener('click', function (event)
+    {
+        copiarContenido(this, 'correoInfoContacto');
+    });
+
+    document.getElementById('copiarTelf').addEventListener('click', function (event)
+    {
+        copiarContenido(this, 'telfInfoContacto');
+     });
+
+    function copiarContenido(icono, id) {
+    let texto = document.getElementById(id).textContent;
+        navigator.clipboard.writeText(texto)
+            .then(() => {
+                icono.classList.remove('bi-clipboard');
+                icono.classList.add('bi-check-lg');
+                icono.title = 'Copiado';
+                bootstrap.Tooltip.getOrCreateInstance(icono).show();
+
+                restaurarIcono(icono)
+            })
+    }
+
+    function restaurarIcono(icono) {
+        setTimeout(function () {
+            icono.classList.remove('bi-check-lg');
+            icono.classList.add('bi-clipboard');
+            icono.title = '';
+            bootstrap.Tooltip.getInstance(icono).dispose();
+        }, 2000)
+
+    }
+
+
+
+    ////////////////////////////////////
+    ////////////////////////////////////
+    ////////////////////////////////////
 
 
     function subirArriba() {
@@ -243,5 +278,6 @@
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl)
     })
+
 
 </script>

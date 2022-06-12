@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Crear Modificar Contacto -->
     <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal"
         aria-hidden="true">
         <div class="modal-lg modal-dialog">
@@ -69,11 +69,13 @@
                             </div>
                             <!-- Parte Derecha -->
                             <div class="div-img-form">
-                                <i class="icono-form bi bi-question-circle-fill btn" data-bs-toggle="popover" data-bs-content="Se recomiendan imágenes cuadradas para una mejor visualización. De lo contrario una parte de la imágen será recortada, resolución recomendada 320x320"
-                                data-bs-trigger="hover"></i>
+                                <i class="icono-form bi bi-question-circle-fill btn" data-bs-toggle="popover"
+                                    data-bs-content="Se recomiendan imágenes cuadradas para una mejor visualización. De lo contrario una parte de la imágen será recortada, resolución recomendada 320x320"
+                                    data-bs-trigger="hover"></i>
                                 <img class="img-fluid img-form" id="imgForm" alt="Imagen de Contacto">
-                                <div class="lottie-form" id="lottieForm" >
-                                    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_z7DhMX.json" speed="1" loop autoplay></lottie-player>
+                                <div class="lottie-form" id="lottieForm">
+                                    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_z7DhMX.json"
+                                        speed="1" loop autoplay></lottie-player>
                                 </div>
                             </div>
                         </div>
@@ -86,4 +88,39 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Info Contacto -->
+        <div class="modal fade" id="infoContactoModal" tabindex="-1" aria-labelledby=""
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="d-flex justify-content-center align-items-center flex-column">
+                                <!-- Parte Superior -->
+                                <div class="m-3">
+                                    <h3 class="text-uppercase text-center fw-bold mb-2" id="nombreInfoContacto"></h3>
+                                    <div class="d-flex align-content-center">
+                                        <i class="bi bi-envelope-fill me-2"></i>
+                                        <h5 class="me-4"id="correoInfoContacto"></h5>
+                                        <i id="copiarCorreo" class="bi bi-clipboard boton-copiar" data-bs-toggle="tooltip" data-bs-placement="right" title="Copiar Correo"></i>
+                                    </div>
+                                    <div class="d-flex align-content-center">
+                                        <i class="bi bi-telephone-fill me-2"></i>
+                                        <h5 class="me-4" id="telfInfoContacto"></h5>
+                                        <i id="copiarTelf" class="bi bi-clipboard boton-copiar"data-bs-toggle="tooltip" data-bs-placement="right" title="Copiar Teléfono"></i>
+                                    </div>
+                                </div>
+                                <!-- Parte Inferior -->
+                                <div class="m-3">
+                                    <img  id="imgInfoContacto" class ="border border-4 border-dark rounded"alt="Vista Previa de la Imagen del Contacto">
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+
 </main>
